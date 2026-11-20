@@ -442,6 +442,26 @@ body.light #toast{background:#16181D}
 .tmp .val{font-size:calc(var(--bh)*.66);letter-spacing:.01em}
 .pthumb b{font-size:15px;letter-spacing:0}
 .g2 .pthumb b{font-size:34px}.g3 .pthumb b{font-size:22px}.g4 .pthumb b{font-size:15px}
+/* akun di menu samping: foto profil */
+.dacc .av{background-size:cover;background-position:center}
+body.rot #vDet{touch-action:none}
+/* pustaka tampilan kotak: judul (Orbitron, kiri atas, maks 4 baris) dan artist (kanan bawah) */
+.pthumb.pcov{justify-content:flex-start;align-items:stretch;padding:9px 10px;gap:5px;text-align:left;overflow:hidden;color:inherit}
+.pcov .pt{flex:1;min-height:0;font-family:Orbitron,"Courier New",monospace;font-weight:600;font-size:15px;line-height:1.12;letter-spacing:0;text-align:left;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow-wrap:normal;word-break:normal}
+.g2 .pcov .pt{font-size:34px}.g3 .pcov .pt{font-size:22px}.g4 .pcov .pt{font-size:15px}
+.pcov .pa{flex:none;font-family:Inter,sans-serif;font-weight:700;font-size:8px;line-height:1.3;letter-spacing:.04em;text-align:right;color:var(--mut);white-space:nowrap;overflow:hidden}
+.g2 .pcov .pa{font-size:12px}.g3 .pcov .pa{font-size:10px}
+.pcov .pw{display:inline-block;white-space:nowrap}
+.pcov .pw.sl{animation:pslide 6s ease-in-out infinite alternate}
+@keyframes pslide{0%,15%{transform:translateX(0)}85%,100%{transform:translateX(calc(-1*var(--sh)))}}
+@media (prefers-reduced-motion:reduce){.pcov .pw.sl{animation:none}}
+/* V6: ukuran & letak tulisan di kotak lagu mengikuti lebar kotak (judul kiri atas, artist kanan bawah), sama di potret dan landscape */
+@supports (width:1cqw){
+.pthumb.pcov{container-type:inline-size;display:block;position:relative;padding:0;gap:0}
+.pcov .pt,.g2 .pcov .pt,.g3 .pcov .pt,.g4 .pcov .pt{position:absolute;left:5cqw;right:5cqw;top:4.5cqw;bottom:15cqw;flex:none;font-size:13.5cqw;line-height:1.12;-webkit-line-clamp:5}
+.pcov .pa,.g2 .pcov .pa,.g3 .pcov .pa,.g4 .pcov .pa{position:absolute;left:6cqw;right:7cqw;bottom:6.5cqw;font-size:7.5cqw;line-height:1.2;letter-spacing:.02em}
+}
+
 #tname,body.land #tname{font-family:"Lemon Milk Pro","Krona One",Inter,sans-serif;font-weight:400;letter-spacing:.08em}
 #tname{font-size:15px}
 #goSrch .i-x{display:none}#goSrch.isx .i-s{display:none}#goSrch.isx .i-x{display:grid}
@@ -708,13 +728,17 @@ body.land #lxRot{display:grid;grid-column:1;grid-row:2/4;align-self:start;margin
 .dguide a{color:var(--ac);word-break:break-all}
 .dresw{flex:none;max-height:46%;overflow-y:auto;padding:0 16px 14px}
 .dresw .dres{margin-top:8px}
-#idSrc{margin:0 auto 10px;max-width:300px}
+#idSrc{margin:0 auto 12px;max-width:300px}
 .idr{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0}
 .idr div{background:var(--s2);border:1px solid var(--line);border-radius:14px;padding:8px 2px;text-align:center}
 .idr small{display:block;font-size:9px;letter-spacing:.14em;color:var(--mut);font-weight:700}
 .idr b{display:block;font-size:15px;margin-top:3px}
 .idt{font-size:19px;font-weight:800;text-align:center;word-break:break-word}.ida{font-size:13px;color:var(--mut);text-align:center;margin-top:2px}
-#idRes{text-align:left}
+.dres{position:relative}
+.dx{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--txt);font-size:22px;line-height:1;cursor:pointer;padding:0;display:grid;place-items:center;z-index:2}
+.dxs{position:static;width:30px;height:30px;font-size:20px}
+.gxrow{display:flex;align-items:center;justify-content:space-between;margin:10px 4px 4px;font-size:11px;letter-spacing:.12em;color:var(--ac);font-weight:700}
+.idr3{grid-template-columns:repeat(3,1fr)}
 body.land .dhero{width:60px;height:60px;margin:2px auto 12px}
 body.land .dhero svg{width:26px;height:26px}
 body.land .dslide h2{font-size:18px}
@@ -764,7 +788,7 @@ body.land .dslide p{margin-bottom:8px;font-size:12.5px}
 <label class="fld"><span>Key</span><input id="svK" class="nminput" type="text" maxlength="12" autocomplete="off" placeholder="mis. Am"></label></div>
 <label class="fld" id="svNW" hidden><span>Catatan</span><textarea id="svN" class="nminput" rows="3" maxlength="400" placeholder="Opsional"></textarea></label>
 <div class="xbtns" style="margin-top:16px"><button id="svNo">Batal</button><button id="svOk">Simpan</button></div></div></div>
-<div id="exdlg" hidden><div class="kpbox xbox"><div class="xtxt">Export Audio</div>
+<div id="exdlg" hidden><div class="kpbox xbox"><div class="xtxt">Ekspor Audio</div>
 <div class="exsong" id="exSong"></div>
 <div class="seg" id="exSeg"><button data-m="bar">Birama</button><button data-m="mmss">Menit : Detik</button></div>
 <div class="exrow" id="exBar"><label class="fld"><span>Jumlah birama</span><input id="exB" class="nminput" type="number" inputmode="numeric" min="1" max="300"></label></div>
@@ -839,7 +863,7 @@ body.land .dslide p{margin-bottom:8px;font-size:12.5px}
         <button class="dk" id="rotBtn" aria-label="Putar layar"><svg viewBox="2.8 3.3 18.4 17.4" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.9" y="6.5" width="6.2" height="11" rx="1.1"/><path d="M11.4 7.7h1.2M11.4 16.3h1.2" stroke-width=".8"/><g><path d="M7.12 10.48 A1.95 1.95 0 1 0 4.66 13.40" stroke-width="1.55"/><path d="M5.65 14.66 L3.78 13.90 L5.36 12.67 Z" fill="currentColor" stroke-width=".4"/></g><g transform="rotate(180 12 12)"><path d="M7.12 10.48 A1.95 1.95 0 1 0 4.66 13.40" stroke-width="1.55"/><path d="M5.65 14.66 L3.78 13.90 L5.36 12.67 Z" fill="currentColor" stroke-width=".4"/></g></svg><span>PUTAR</span></button>
         <button class="dk" id="dkDet" aria-label="Deteksi tempo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M4 12v0M8 8v8M12 4v16M16 8v8M20 12v0"/></svg><span>DETEKSI</span></button>
         <button class="dk" id="goPrac" aria-label="Mode latihan"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><circle cx="12" cy="13.5" r="7"/><path d="M12 9.8v4l2.5 1.5M9.5 3h5"/></svg><span>LATIHAN</span></button>
-        <button class="dk w" id="dkExp" aria-label="Export audio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 13v6h14v-6"/></svg><span>EXPORT AUDIO</span></button>
+        <button class="dk w" id="dkExp" aria-label="Export audio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5 13v6h14v-6"/></svg><span>EKSPOR</span></button>
       </div>
       <button class="tap" id="tap">TAP</button>
     </div>
@@ -929,11 +953,6 @@ body.land .dslide p{margin-bottom:8px;font-size:12.5px}
         <textarea id="cfgTxt" rows="6" placeholder='apiKey: "...", authDomain: "...", projectId: "..."'></textarea>
         <button class="big alt" id="cfgSave">Simpan konfigurasi</button>
       </div>
-      <div id="cloudBox">
-        <div class="cloudRow"><div class="av" id="cAv">G</div><div class="cstat" id="cUser"></div></div>
-        <div class="cbtns"><button class="big" id="gLogin">Masuk dengan Google</button><button class="big alt" id="gOut" hidden>Keluar</button><button class="big" id="gSync" disabled>⟳ Sinkron data terbaru</button></div>
-        <div class="hint" id="lastSync"></div>
-      </div>
       <div class="hint" id="cMsg"></div>
       <label class="opt"><span>Sinkron otomatis<small>Saat aplikasi dibuka</small></span><input type="checkbox" id="oSync"></label>
       <div class="tools" style="padding:12px 0 6px"><button id="bkSave">Cadangkan</button><button id="bkLoad">Pulihkan</button></div>
@@ -959,17 +978,9 @@ body.land .dslide p{margin-bottom:8px;font-size:12.5px}
     <div class="dtabs" id="dTabs" hidden><button data-m="dMic" class="on">Mikrofon</button><button data-m="dFile">File</button><button data-m="dData">Text/CSV</button></div>
     <div class="dnav"><button class="dar" id="dPrev" aria-label="Metode sebelumnya"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M15 5l-7 7 7 7"/></svg></button><div class="ddots" id="dDots"></div><button class="dar" id="dNext" aria-label="Metode berikutnya"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M9 5l7 7-7 7"/></svg></button></div>
     <div class="dpager" id="dPager">
-    <section class="dslide"><div class="dhero"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><h2>Mikrofon</h2><p>Putar lagu di dekat HP, lalu tekan tombol. Aplikasi mendengarkan sekitar 20 detik dan menghitung BPM-nya.</p>
-      <div class="dpane" id="dMic"><button class="big" id="dMicGo">Mulai dengar</button></div></section>
-    <section class="dslide"><div class="dhero"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M4 12v0M8 8v8M12 4v16M16 8v8M20 12v0"/></svg></div><h2>Kenali Lagu</h2><p>Seperti Shazam: aplikasi mendengarkan lagu yang sedang diputar, lalu mencari Judul, Artist, BPM, Birama, Durasi, dan Key.</p>
+    <section class="dslide"><div class="dhero"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><h2>Mikrofon</h2><p>Putar lagu di dekat HP, lalu tekan tombol. Aplikasi mendengarkan sekitar 20 detik, menghitung BPM, lalu mencari Judul, Artist, Birama, Durasi, dan Key. Kalau datanya tidak ditemukan, hasil BPM dari mikrofon yang dipakai.</p>
       <div class="seg" id="idSrc"><button data-s="mic" class="on">Mikrofon</button><button data-s="sys" id="idSys" hidden>Audio perangkat</button></div>
-      <div class="hint" id="idHint">Putar lagunya dari speaker, lalu tekan tombol. HP mendengarkan lewat mikrofon.</div>
-      <button class="big" id="idGo">Kenali lagu</button>
-      <div class="hint" id="idMsg"></div>
-      <div class="dres" id="idRes" hidden><div class="dsub">LAGU TERDETEKSI</div>
-        <div class="idt" id="idT"></div><div class="ida" id="idA"></div>
-        <div class="idr"><div><small>BPM</small><b id="idB">—</b></div><div><small>BIRAMA</small><b id="idTS">—</b></div><div><small>DURASI</small><b id="idD">—</b></div><div><small>KEY</small><b id="idK">—</b></div></div>
-        <div class="tools"><button id="idSave">Simpan lagu</button><button id="idOpen">Buka</button></div></div></section>
+      <div class="dpane" id="dMic"><button class="big" id="dMicGo">Mulai dengar</button></div></section>
     <section class="dslide"><div class="dhero"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div><h2>File Lagu</h2><p>Pilih file lagu (mp3, m4a, wav) dari HP. Diproses di HP, tanpa internet.</p>
       <div class="dpane" id="dFile"><button class="big" id="dFileGo">Pilih file lagu</button><input type="file" id="dFileIn" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac,.aac" hidden></div></section>
     <section class="dslide"><div class="dhero"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg></div><h2>Judul &amp; Artist</h2><p>Isi judul lagu, nama artist, atau keduanya. Judul saja menampilkan semua lagu yang cocok. Artist saja menampilkan lagu populernya.</p>
@@ -985,6 +996,7 @@ body.land .dslide p{margin-bottom:8px;font-size:12.5px}
     </div>
     <div class="hint" id="gMsg"></div>
     <div class="prow" id="gBackRow" hidden><button class="load" id="gBack" type="button">‹ Kembali ke daftar hasil</button></div>
+    <div class="gxrow" id="gXRow" hidden><span>HASIL PENCARIAN</span><button type="button" class="dx dxs" id="gX" aria-label="Tutup hasil">×</button></div>
     <div id="gList" style="max-height:340px;overflow-y:auto;overscroll-behavior:contain"></div>
     
     </section>
@@ -998,13 +1010,16 @@ untuk tambahkan lagu secara masal</div>
     </div>
     <div class="dresw" id="dResW"><div class="dbar" id="dBar" hidden><i id="dBarI"></i></div>
     <div class="dres" id="dCsv" hidden>
+      <button type="button" class="dx" data-x="dCsv" aria-label="Tutup hasil">×</button>
       <div class="dsub">DATA LAGU DARI FILE</div>
       <div class="hint" id="dCsvInfo"></div>
       <div class="hint" id="dCsvList" style="text-align:left"></div>
       <div class="tools"><button id="dCsvSave">Simpan data lagu</button><button id="dCsvNo">Tidak</button></div>
     </div>
     <div class="dres" id="dRes" hidden>
+      <button type="button" class="dx" data-x="dRes" aria-label="Tutup hasil">×</button>
       <div class="dsub" id="dSubT">HASIL DETEKSI (BELUM DISIMPAN)</div>
+      <div class="idr idr3" id="dIdr" hidden><div><small>BIRAMA</small><b id="dIdTS">—</b></div><div><small>DURASI</small><b id="dIdD">—</b></div><div><small>KEY</small><b id="dIdK">—</b></div></div>
       <div class="dbpm"><button id="dHalf" aria-label="Bagi dua">÷2</button><div><b id="dBpm">--</b><small>BPM</small></div><button id="dDbl" aria-label="Kali dua">×2</button></div>
       <div class="tools"><input id="dName" type="text" aria-label="Nama lagu"><button id="dSave">Simpan lagu</button></div>
       <button class="big alt" id="dOpen">Buka di metronome</button>
@@ -1086,7 +1101,7 @@ untuk tambahkan lagu secara masal</div>
   <div id="asheet" hidden><div class="asbk" id="asBk"></div><div class="asbox"><div class="astitle"><b id="asT"></b><span id="asS"></span></div><div class="aslist" id="asList"></div><button class="asclose" id="asX">Tutup</button></div></div>
   <div id="dim" hidden></div>
   <aside id="drawer" hidden aria-label="Menu">
-    <div class="dacc"><div class="av" id="dAv">G</div><div class="dn"><b id="dAccN">Akun Google</b><span id="dAccS">Belum masuk</span></div></div>
+    <div class="dacc"><div class="av" id="dAv">G</div><input type="file" id="avIn" accept="image/*" hidden><div class="dn"><b id="dAccN">Akun Google</b><span id="dAccS">Belum masuk</span></div></div>
     <div class="lab">MENU</div>
     <button class="mi on" data-go="vMain"><i><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M8.5 3h7l3 18h-13z"/><path d="M12 17l3-9"/><circle cx="15" cy="8" r="1.3" fill="currentColor"/></svg></i><span class="lbA">Metronom Landscape</span><span class="lbB">Metronom Potrait</span></button>
     <button class="mi" data-go="vPre"><i><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></i>Pustaka Lagu<small id="dCntP"></small></button>
@@ -1980,18 +1995,12 @@ const _sp = savePresets, _ss = saveSetlist;
 savePresets = function () { meta.dirtyAt = Date.now(); saveMeta(); _sp(); };
 saveSetlist = function () { meta.dirtyAt = Date.now(); saveMeta(); _ss(); };
 
-function cmsg(t) { $('cMsg').textContent = t; }
+function cmsg(t) { const e = $('cMsg'); if (e) e.textContent = t; if (t && cmsg.show) toast(t); }
 function getCfg() {
   if (window.FIREBASE_CONFIG) return window.FIREBASE_CONFIG;
   try { return JSON.parse(localStorage.getItem('metronome-fbcfg') || 'null'); } catch (e) { return null; }
 }
-function renderCloud() {
-  const has = !!getCfg();
-  $('cfgBox').hidden = has; $('cloudBox').hidden = !has;
-  $('cUser').textContent = user ? 'Masuk sebagai ' + (user.email || user.displayName) : 'Belum masuk';
-  $('gLogin').hidden = !!user; $('gOut').hidden = !user; $('gSync').disabled = !user;
-  $('lastSync').textContent = meta.at ? 'Terakhir sinkron: ' + fmt(meta.at) : 'Belum pernah sinkron';
-}
+function renderCloud() { $('cfgBox').hidden = !!getCfg(); }
 function initCloud() {
   const cfg = getCfg();
   if (cfg && typeof firebase !== 'undefined') {
@@ -2013,16 +2022,6 @@ $('cfgSave').onclick = () => {
   try { localStorage.setItem('metronome-fbcfg', JSON.stringify(cfg)); } catch (e) { cmsg('Tidak bisa menyimpan konfigurasi.'); return; }
   location.reload();
 };
-$('gLogin').onclick = async () => {
-  if (!auth) { cmsg('Firebase belum siap.'); return; }
-  const pr = new firebase.auth.GoogleAuthProvider();
-  try { await auth.signInWithPopup(pr); cmsg('Berhasil masuk. Tekan Sinkron untuk menyimpan atau mengambil data.'); }
-  catch (e) {
-    if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') auth.signInWithRedirect(pr);
-    else cmsg('Gagal masuk: ' + (e.code || e.message));
-  }
-};
-$('gOut').onclick = () => { if (auth) auth.signOut(); cmsg('Sudah keluar.'); };
 
 // Rename lagu di semua setlist sekaligus
 function renameEverywhere(a, b) { if (a === b) return; syncActive(); renameInLists(a, b); setlist = setlist.map((n) => (n === a ? b : n)); }
@@ -2054,7 +2053,7 @@ function mergeData(c) {
 async function syncNow(auto) {
   await presetsReadyP;   // jangan sinkron sebelum daftar lagu selesai dimuat dari IndexedDB
   if (!db || !user) { cmsg('Masuk dulu dengan Google.'); return; }
-  $('gSync').disabled = true; cmsg('Menyinkronkan\u2026');
+  cmsg('Menyinkronkan\u2026');
   try {
     const ref = db.collection('users').doc(user.uid);
     const snap = await ref.get();
@@ -2081,9 +2080,8 @@ async function syncNow(auto) {
     meta.syncedAt = t; meta.cleanAt = Date.now(); meta.at = Date.now(); saveMeta();
     cmsg({ push: 'Data di HP sudah dikirim ke akun.', pull: 'Data terbaru dari akun sudah diambil.', merge: 'Data HP dan akun sudah digabung.', none: 'Sudah paling baru.' }[action]); if (auto) toast('Sinkron otomatis selesai');
   } catch (e) { cmsg('Gagal sinkron: ' + (e.code || e.message)); if (auto) toast('Sinkron otomatis gagal'); }
-  $('gSync').disabled = !user; renderCloud();
+  renderCloud();
 }
-$('gSync').onclick = () => syncNow();
 $('goAcc').onclick = () => { show('vCfg'); renderCloud(); };
 
 
@@ -2838,6 +2836,28 @@ $('slNew').onclick = () => askName('Nama setlist baru', '', (n) => {
 });
 $('slBack').onclick = () => { slOpen = null; renderSetlist(); };
 
+// Kotak lagu: judul di kiri atas, artist di kanan bawah; kata yang terlalu panjang bergeser otomatis
+function fillCover(th, p) {
+  const pt = th.querySelector('.pt'), pa = th.querySelector('.pa');
+  const words = (p.title || titleOf(p.name) || '').trim().split(/\s+/).filter(Boolean);
+  words.forEach((w, i) => { const e = document.createElement('span'); e.className = 'pw'; e.textContent = w; pt.appendChild(e); if (i < words.length - 1) pt.appendChild(document.createTextNode(' ')); });
+  const art = (p.artist || artistOf(p.name) || '').trim();
+  if (art) { const e = document.createElement('span'); e.className = 'pw'; e.textContent = art; pa.appendChild(e); }
+}
+function fitSlide(root, force) {
+  if (!root) return;
+  root.querySelectorAll('.pcov').forEach((c) => {
+    if (c._fit && !force) return;
+    let ok = true;
+    c.querySelectorAll('.pt, .pa').forEach((box) => {
+      const cw = box.clientWidth; if (!cw) { ok = false; return; }
+      box.querySelectorAll('.pw').forEach((w) => { w.classList.remove('sl'); const ov = w.offsetWidth - cw; if (ov > 1) { w.style.setProperty('--sh', ov + 'px'); w.classList.add('sl'); } });
+    });
+    c._fit = ok;
+  });
+}
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitSlide($('plist'), true));
+window.addEventListener('resize', () => { clearTimeout(fitSlide._t); fitSlide._t = setTimeout(() => fitSlide($('plist'), true), 200); });
 var plQ = '';
 function renderPresets() {
   const box = $('plist'); box.innerHTML = ''; box.className = opts.view === 'list' ? '' : opts.view;
@@ -2847,10 +2867,12 @@ function renderPresets() {
   if ((plQ || '').trim() && !shown.length) { const e = document.createElement('div'); e.className = 'hint'; e.textContent = 'Lagu tidak ditemukan'; box.appendChild(e); }
   const buildRow = (p) => {
     const it = document.createElement('div'); it.className = 'pitem' + (openAct === p ? ' cur' : '');
+    const grid = opts.view !== 'list', art = p.artist || artistOf(p.name);
     const th = document.createElement('div'); th.className = 'pthumb'; th.innerHTML = '<b></b><i>BPM</i>'; th.firstChild.textContent = p.bpm;
+    if (grid) { th.className = 'pthumb pcov'; th.innerHTML = '<div class="pt"></div><div class="pa"></div>'; fillCover(th, p); }
     const tx = document.createElement('div'); tx.className = 'ptxt'; tx.innerHTML = '<b></b><small></small>';
-    tx.querySelector('b').textContent = (p.fav ? '\u2605 ' : '') + p.name;
-    tx.querySelector('small').textContent = p.beats + '/' + NOTES[p.note] + (p.dur ? ' \u00b7 ' + fmtDur(p.dur) : '') + (p.key ? ' \u00b7 ' + p.key : '') + (p.capo ? ' \u00b7 Capo ' + p.capo : '') + (p.tags ? ' \u00b7 ' + p.tags : '') + (!p.key && !p.capo && !p.tags && p.added ? ' \u00b7 ' + fmt(p.added) : '');
+    tx.querySelector('b').textContent = (p.fav ? '\u2605 ' : '') + (grid ? p.bpm + ' BPM' : (p.title || titleOf(p.name)));
+    tx.querySelector('small').textContent = [grid ? '' : art, p.beats + '/' + NOTES[p.note], p.dur ? fmtDur(p.dur) : '', p.key || '', p.capo ? 'Capo ' + p.capo : '', p.tags || ''].filter(Boolean).join(' \u00b7 ');
     const play = document.createElement('button'); play.className = 'pplay'; play.innerHTML = PLAY_SVG; play.setAttribute('aria-label', 'Buka ' + p.name);
     play.onclick = (e) => { e.stopPropagation(); openSong(p); };
     const dots = document.createElement('button'); dots.className = 'pdots'; dots.textContent = '\u22ee'; dots.setAttribute('aria-label', 'Menu ' + p.name);
@@ -2887,7 +2909,7 @@ function renderPresets() {
     for (; n < end; n++) buildRow(shown[n]);
     plCount = n;
     if (n < shown.length) box.appendChild(sentinel); else if (plIO) { plIO.disconnect(); plIO = null; }
-    setTimeout(updAllScroll, 0);
+    setTimeout(updAllScroll, 0); requestAnimationFrame(() => fitSlide(box));
   };
   more(Math.max(60, plCount || 0));
   if (n < shown.length && 'IntersectionObserver' in window) {
@@ -3156,7 +3178,7 @@ function showDetResult() { if (!dCur) return; $('dCsv').hidden = true; $('dRes')
 // Hasil deteksi belum disimpan; baru masuk daftar lagu setelah tombol "Simpan lagu" ditekan
 function showPending(name, bpm, ts) {
   dCur = { name: String(name || '').trim() || 'Lagu terdeteksi', bpm: bpm, ts: ts || null, saved: null };
-  $('dSave').textContent = 'Simpan lagu'; $('dSave').disabled = false; $('dSubT').textContent = 'HASIL DETEKSI (BELUM DISIMPAN)'; showDetResult();
+  $('dSave').textContent = 'Simpan lagu'; $('dSave').disabled = false; $('dSubT').textContent = 'HASIL DETEKSI (BELUM DISIMPAN)'; $('dIdr').hidden = true; showDetResult();
 }
 function mkPreset(name, bpm, ts) {
   let n = beats, ni = noteIdx; if (ts && NOTES.indexOf(ts.d) >= 0) { n = ts.n; ni = NOTES.indexOf(ts.d); }
@@ -3183,14 +3205,21 @@ async function detectFromMic() {
   const ac = new (window.AudioContext || window.webkitAudioContext)();   // dibuat langsung saat tombol ditekan (syarat iOS), sebelum dialog izin
   try { ac.resume(); } catch (e) { /* lanjut */ }
   let stream = null, err = null;
-  for (const c of [{ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } }, { audio: true }]) {
-    try { stream = await navigator.mediaDevices.getUserMedia(c); err = null; break; }
-    catch (e) { err = e; if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) break; }
+  if (idSrc === 'sys') {
+    try { stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true }); stream.getVideoTracks().forEach((t) => t.stop()); if (!stream.getAudioTracks().length) { stream.getTracks().forEach((t) => t.stop()); stream = null; err = { name: 'NOAUDIO' }; } }
+    catch (e) { stream = null; err = e; }
+  } else {
+    for (const c of [{ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } }, { audio: true }]) {
+      try { stream = await navigator.mediaDevices.getUserMedia(c); err = null; break; }
+      catch (e) { err = e; if (e && (e.name === 'NotAllowedError' || e.name === 'SecurityError')) break; }
+    }
   }
   if (!stream) {
     try { ac.close(); } catch (e) { /* abaikan */ } setAudioSession();
     const n = err && err.name;
-    dmsg(n === 'NotAllowedError' || n === 'SecurityError' ? 'Izin mikrofon ditolak. Di iPhone: ketuk aA di address bar, Pengaturan Situs Web, Mikrofon, pilih Izinkan, lalu muat ulang halaman.'
+    dmsg(idSrc === 'sys' && n === 'NOAUDIO' ? 'Audio tidak ikut dibagikan. Pilih tab atau layar, lalu centang \"Bagikan audio\".'
+      : idSrc === 'sys' && (n === 'NotAllowedError' || n === 'SecurityError') ? 'Berbagi audio perangkat dibatalkan.'
+      : n === 'NotAllowedError' || n === 'SecurityError' ? 'Izin mikrofon ditolak. Di iPhone: ketuk aA di address bar, Pengaturan Situs Web, Mikrofon, pilih Izinkan, lalu muat ulang halaman.'
       : n === 'NotFoundError' ? 'Mikrofon tidak ditemukan di perangkat ini.'
       : n === 'NotReadableError' ? 'Mikrofon sedang dipakai aplikasi lain. Tutup aplikasi itu lalu coba lagi.'
       : 'Mikrofon tidak bisa dipakai' + (n ? ' (' + n + ')' : '') + '. Muat ulang halaman lalu coba lagi.');
@@ -3206,7 +3235,7 @@ async function detectFromMic() {
     stream.getTracks().forEach((t) => t.stop()); const sr = ac.sampleRate; try { ac.close(); } catch (e) { /* abaikan */ } setAudioSession();
     dBusy = false; dStop = null; busyBar(false); $('dMicGo').textContent = 'Mulai dengar';
     const x = new Float32Array(got); let o = 0; chunks.forEach((c) => { x.set(c, o); o += c.length; });
-    finishDetect(x, sr, 'Lagu mikrofon ' + hhmm());
+    micDetect(x, sr, 'Lagu mikrofon ' + hhmm());
   };
   sp.onaudioprocess = (e) => {
     const d = e.inputBuffer.getChannelData(0); chunks.push(new Float32Array(d)); got += d.length;
@@ -3263,7 +3292,7 @@ function conclude(found) {
 function gmsg(t) { $('gMsg').textContent = t; }
 var gBusy = false;
 function setBusy(on) { gBusy = on; $('gGo').disabled = on; busyBar(on); }
-function resetResults() { $('gList').innerHTML = ''; $('gList').hidden = false; $('gBackRow').hidden = true; $('dRes').hidden = true; $('dCsv').hidden = true; dmsg(''); }
+function resetResults() { $('gXRow').hidden = true; $('gList').innerHTML = ''; $('gList').hidden = false; $('gBackRow').hidden = true; $('dRes').hidden = true; $('dCsv').hidden = true; dmsg(''); }
 // Cari daftar lagu: judul (opsional artis) -> semua lagu yang cocok; artis saja -> lagu populer artis itu
 async function runSearch() {
   const title = $('gQ').value.replace(/\s+/g, ' ').trim(), artist = $('gA').value.replace(/\s+/g, ' ').trim();
@@ -3281,7 +3310,7 @@ async function runSearch() {
 }
 // Daftar lagu tampil seperti daftar lagu di aplikasi; tempo baru dicari setelah satu lagu ditekan
 function renderSongs(songs, byArtist) {
-  const box = $('gList'); box.innerHTML = '';
+  const box = $('gList'); box.innerHTML = ''; $('gXRow').hidden = false;
   songs.forEach((sg) => {
     const row = document.createElement('div'); row.className = 'prow';
     const b = document.createElement('button'); b.type = 'button'; b.className = 'load'; b.textContent = sg.title;
@@ -3486,7 +3515,7 @@ async function importSong(name, bpm, ts, multi, sticky) {
 }
 function adjustDetected(f) {
   if (!dCur) return;
-  dCur.bpm = Math.min(500, Math.max(20, Math.round(dCur.bpm * f)));
+  dCur.bpm = Math.min(500, Math.max(20, Math.round(dCur.bpm * f))); dCur.adj = true;
   if (dCur.saved) { dCur.saved.bpm = dCur.bpm; dCur.saved.mod = Date.now(); savePresets(); renderPresets(); }
   showDetResult();
 }
@@ -3513,7 +3542,9 @@ $('dSave').onclick = () => {
   if (dSaving) return; dSaving = true;
   importSong(nn, dCur.bpm, dCur.ts, false, null).then((r) => {
     if (r.act === 'skip') { dmsg('Dilewati: lagu tidak disimpan.'); return; }
-    dCur.name = r.p.name; $('dName').value = r.p.name; savePresets(); renderPresets();
+    dCur.name = r.p.name; $('dName').value = r.p.name;
+    const ex = dCur.extra; if (ex) { r.p.title = ex.title; if (ex.artist) r.p.artist = ex.artist; if (ex.dur) r.p.dur = ex.dur; if (ex.key) r.p.key = ex.key; r.p.mod = Date.now(); }
+    savePresets(); renderPresets();
     dCur.saved = r.p; $('dSave').textContent = 'Tersimpan \u2713'; $('dSave').disabled = true; $('dSubT').textContent = 'TERSIMPAN DI DAFTAR LAGU';
     dmsg(r.act === 'over' ? 'Data lama ditimpa dengan data baru.' : r.act === 'add' ? 'Disimpan sebagai lagu baru: ' + r.p.name : 'Lagu disimpan.');
   }).finally(() => { dSaving = false; });
@@ -3521,6 +3552,14 @@ $('dSave').onclick = () => {
 $('dDataGo').onclick = () => $('dDataIn').click();
 $('dDataIn').onchange = (e) => { const f = e.target.files && e.target.files[0]; e.target.value = ''; if (f) readDataFile(f); };
 $('dCsvNo').onclick = () => { $('dCsv').hidden = true; dRows = []; dmsg('Tidak disimpan.'); };
+// Tombol X: tutup hasil deteksi (mikrofon, file, judul & artist, TXT/CSV)
+document.querySelectorAll('.dx[data-x]').forEach((b) => { b.onclick = () => {
+  dRun++;
+  if (b.dataset.x === 'dCsv') { $('dCsv').hidden = true; dRows = []; } else { $('dRes').hidden = true; dCur = null; }
+  if (!$('gBackRow').hidden) { $('gBackRow').hidden = true; $('gList').hidden = false; gmsg('Pilih lagu dari daftar.'); }
+  dmsg(''); busyBar(false);
+}; });
+$('gX').onclick = () => { resetResults(); gmsg(''); };
 var csvBusy = false;
 $('dCsvSave').onclick = async () => {
   if (csvBusy) return; csvBusy = true;
@@ -3732,11 +3771,41 @@ function renderTrack() {
 function updAcc() {
   const nm = user ? (user.displayName || user.email || 'Akun Google') : 'Akun Google';
   const L = user ? (nm.trim()[0] || 'G').toUpperCase() : 'G';
-  ['dAv', 'cAv'].forEach((id) => { if ($(id)) $(id).textContent = L; });
+  const ph = myPhoto() || (user && user.photoURL) || '', av = $('dAv');
+  if (av) { av.textContent = ph ? '' : L; av.style.backgroundImage = ph ? 'url("' + ph.replace(/"/g, '%22') + '")' : ''; }
   if ($('dAccN')) $('dAccN').textContent = nm;
   if ($('dAccS')) { $('dAccS').textContent = user ? '\u25cf Tersinkron' + (meta && meta.at ? ' \u00b7 ' + fmt(meta.at) : '') : 'Belum masuk'; $('dAccS').classList.toggle('off', !user); }
 }
 (function () { const _rc = renderCloud; renderCloud = function () { _rc(); try { updAcc(); } catch (e) { /* abaikan */ } }; })();
+function myPhoto() { try { return localStorage.getItem('metronome-avatar') || ''; } catch (e) { return ''; } }
+async function googleLogin() {
+  if (!auth) { toast('Fitur akun belum siap. Periksa koneksi internet.'); return; }
+  const pr = new firebase.auth.GoogleAuthProvider();
+  try { await auth.signInWithPopup(pr); toast('Berhasil masuk'); }
+  catch (e) {
+    if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') auth.signInWithRedirect(pr);
+    else if (e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') toast('Gagal masuk: ' + (e.code || e.message));
+  }
+}
+function setAvatar(f) {
+  const img = new Image(), url = URL.createObjectURL(f);
+  img.onload = () => {
+    const S = 256, c = document.createElement('canvas'); c.width = c.height = S;
+    const k = Math.max(S / img.width, S / img.height), w = img.width * k, h = img.height * k;
+    c.getContext('2d').drawImage(img, (S - w) / 2, (S - h) / 2, w, h); URL.revokeObjectURL(url);
+    try { localStorage.setItem('metronome-avatar', c.toDataURL('image/jpeg', 0.85)); toast('Foto profil diganti'); } catch (e) { toast('Foto tidak bisa disimpan'); }
+    updAcc();
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); toast('File bukan gambar yang valid'); };
+  img.src = url;
+}
+$('dAv').onclick = () => $('avIn').click();                                   // 1. ganti foto profil
+$('avIn').onchange = (e) => { const f = e.target.files && e.target.files[0]; e.target.value = ''; if (f) setAvatar(f); };
+$('dAccN').onclick = () => { if (!user) googleLogin(); else if (confirm('Keluar dari akun Google?')) { if (auth) auth.signOut(); toast('Sudah keluar'); } };   // 2. login Google
+$('dAccS').onclick = async () => {                                            // 3. sinkron
+  if (!user) { toast('Masuk dulu dengan Google'); return; }
+  cmsg.show = true; try { await syncNow(false); } finally { cmsg.show = false; }
+};
 function updDrawer() {
   try { $('dCntP').textContent = presets.length; $('dCntS').textContent = allLists().length; } catch (e) { /* abaikan */ }
   document.querySelectorAll('#drawer .mi[data-go]').forEach((b) => b.classList.toggle('on', b.dataset.go === curView));
@@ -4182,7 +4251,7 @@ new MutationObserver(() => syncListRows()).observe($('slLists'), { childList: tr
 $('lxSnd').onclick = () => show('vOpt');
 
 // ----- DETEKSI: pager per metode -----
-var dNames = ['Mikrofon', 'Kenali Lagu', 'File Lagu', 'Judul & Artist', 'TXT / CSV'], dIdx = 0;
+var dNames = ['Mikrofon', 'File Lagu', 'Judul & Artist', 'TXT / CSV'], dIdx = 0;
 (function () {
   const pg = $('dPager'), dots = $('dDots'); dNames.forEach((n, i) => { const d = document.createElement('i'); d.onclick = () => dGo(i); dots.appendChild(d); });
   window.dGo = function (i) { i = Math.max(0, Math.min(dNames.length - 1, i)); pg.scrollTo({ left: i * pg.clientWidth, behavior: 'smooth' }); };
@@ -4192,50 +4261,79 @@ var dNames = ['Mikrofon', 'Kenali Lagu', 'File Lagu', 'Judul & Artist', 'TXT / C
   updDNav();
 })();
 
-// ----- KENALI LAGU (seperti Shazam) -----
-var idSrc = 'mic', idBusy = false, idCur = null;
+// Landscape yang diputar CSS: sumbu sentuh tertukar, jadi geser halaman deteksi ditangani manual
+(function () {
+  const v = $('vDet'), pg = $('dPager'); let st = null;
+  const app = () => document.querySelector('.app');
+  const vScroller = (el) => { for (let e = el; e; e = e.parentElement) { if (e.scrollHeight > e.clientHeight + 1 && /(auto|scroll)/.test(getComputedStyle(e).overflowY)) return e; if (e === v) break; } return null; };
+  v.addEventListener('touchstart', (e) => {
+    if (!document.body.classList.contains('rot') || e.touches.length !== 1 || e.target.closest('input, textarea, select')) { st = null; return; }
+    const t = e.touches[0], a = app(), sc = vScroller(e.target);
+    st = { x: t.clientX, y: t.clientY, ax: null, z: (a.getBoundingClientRect().width / Math.max(1, a.offsetHeight)) || 1, l0: pg.scrollLeft, sc: sc, t0: sc ? sc.scrollTop : 0 };
+    pg.style.scrollSnapType = 'none';
+  }, { passive: true });
+  v.addEventListener('touchmove', (e) => {
+    if (!st) return; const t = e.touches[0], dx = t.clientX - st.x, dy = t.clientY - st.y;
+    if (!st.ax) { if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return; st.ax = Math.abs(dy) > Math.abs(dx) ? 'h' : 'v'; }
+    if (e.cancelable) e.preventDefault();
+    if (st.ax === 'h') pg.scrollLeft = st.l0 - dy / st.z; else if (st.sc) st.sc.scrollTop = st.t0 + dx / st.z;
+  }, { passive: false });
+  const end = (e) => {
+    if (!st) return; const s = st; st = null; pg.style.scrollSnapType = '';
+    if (s.ax !== 'h') return;
+    const d = (e.changedTouches[0].clientY - s.y) / s.z; let i = Math.round(pg.scrollLeft / Math.max(1, pg.clientWidth));
+    if (Math.abs(d) > 40) i = dIdx + (d < 0 ? 1 : -1);
+    dGo(i);
+  };
+  v.addEventListener('touchend', end, { passive: true }); v.addEventListener('touchcancel', end, { passive: true });
+})();
+
+// ----- MIKROFON + KENALI LAGU (satu alur) -----
+// Rekam sekali: BPM dihitung di HP (hasil dasar), lalu rekaman dikirim ke server untuk dikenali.
+// Kalau server/datanya tidak tersedia, hasil mikrofon tetap dipakai.
+var idSrc = 'mic', dRun = 0;
 (function () {
   const sys = !!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) && !/Android|iPhone|iPad/i.test(navigator.userAgent);
-  $('idSys').hidden = !sys;
-  document.querySelectorAll('#idSrc button').forEach((b) => { b.onclick = () => { idSrc = b.dataset.s; document.querySelectorAll('#idSrc button').forEach((x) => x.classList.toggle('on', x === b)); $('idHint').textContent = idSrc === 'sys' ? 'Pilih tab atau layar yang memutar lagu, lalu centang "Bagikan audio".' : 'Putar lagunya dari speaker, lalu tekan tombol. HP mendengarkan lewat mikrofon.'; }; });
+  $('idSrc').hidden = !sys; $('idSys').hidden = !sys;
+  document.querySelectorAll('#idSrc button').forEach((b) => { b.onclick = () => { idSrc = b.dataset.s; document.querySelectorAll('#idSrc button').forEach((x) => x.classList.toggle('on', x === b)); }; });
 })();
-async function toWav16k(blob) {
-  const AC = window.AudioContext || window.webkitAudioContext, ac = new AC(), buf = await ac.decodeAudioData(await blob.arrayBuffer()); try { ac.close(); } catch (e) { /* abaikan */ }
-  const off = new OfflineAudioContext(1, Math.max(1, Math.ceil(buf.duration * 16000)), 16000), s = off.createBufferSource(); s.buffer = buf; s.connect(off.destination); s.start();
+async function samplesToWav16k(x, sr) {
+  const off = new OfflineAudioContext(1, Math.max(1, Math.ceil(x.length / sr * 16000)), 16000), buf = off.createBuffer(1, x.length, sr);
+  buf.copyToChannel(x, 0); const s = off.createBufferSource(); s.buffer = buf; s.connect(off.destination); s.start();
   return wavBlob(await off.startRendering());
 }
 function blobB64(blob) { return new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = no; r.readAsDataURL(blob); }); }
-async function idListen() {
-  if (idBusy) return; idBusy = true; $('idRes').hidden = true; $('idGo').disabled = true;
-  const msg = (t) => { $('idMsg').textContent = t; };
+async function identifyFromSamples(x, sr) {
+  const c = new AbortController(), t = setTimeout(() => c.abort(), 30000);
   try {
-    let stream;
-    if (idSrc === 'sys') { stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true }); stream.getVideoTracks().forEach((t) => t.stop()); if (!stream.getAudioTracks().length) throw new Error('NOAUDIO'); }
-    else stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
-    const rec = new MediaRecorder(stream), chunks = []; rec.ondataavailable = (e) => { if (e.data && e.data.size) chunks.push(e.data); };
-    const done = new Promise((ok) => { rec.onstop = ok; }); rec.start();
-    for (let i = 12; i > 0; i--) { msg('Mendengarkan\u2026 ' + i + ' dtk'); await new Promise((r) => setTimeout(r, 1000)); }
-    rec.stop(); await done; stream.getTracks().forEach((t) => t.stop());
-    msg('Mencari lagu\u2026');
-    const wav = await toWav16k(new Blob(chunks, { type: rec.mimeType || 'audio/webm' })), audio = await blobB64(wav);
-    let r; try { const res = await fetch('/.netlify/functions/identify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ audio: audio }) }); r = await res.json(); } catch (e) { r = { ok: false, err: 'NOSERVER' }; }
-    if (!r || !r.ok) {
-      msg(r && r.err === 'NO_TOKEN' ? 'Layanan pengenal lagu belum diaktifkan (token AudD belum dipasang di Netlify).' : r && r.err === 'NOTFOUND' ? 'Lagu tidak dikenali. Coba lagi dengan suara lebih jelas dan dekat.' : 'Fitur ini butuh server aplikasi (Netlify) dan koneksi internet.');
-    } else { idCur = r; showIdResult(r); msg(''); }
-  } catch (e) { msg(e && (e.name === 'NotAllowedError' || e.message === 'NOAUDIO') ? 'Izin atau audio tidak tersedia.' : 'Gagal merekam audio.'); }
-  idBusy = false; $('idGo').disabled = false;
+    const a = Math.max(0, Math.min(Math.round(sr * 2), x.length - Math.round(sr * 12))), seg = x.subarray(a, Math.min(x.length, a + Math.round(sr * 12)));
+    const audio = await blobB64(await samplesToWav16k(seg, sr));
+    const res = await fetch('/.netlify/functions/identify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ audio: audio }), signal: c.signal });
+    const r = await res.json(); return r && r.ok && r.title ? r : null;
+  } catch (e) { return null; } finally { clearTimeout(t); }
 }
-function showIdResult(r) {
-  $('idT').textContent = r.title; $('idA').textContent = r.artist || ''; $('idB').textContent = r.bpm || '\u2014'; $('idTS').textContent = r.ts ? r.ts.n + '/' + r.ts.d : '\u2014'; $('idD').textContent = r.dur ? fmtDur(r.dur) : '\u2014'; $('idK').textContent = r.key || '\u2014'; $('idRes').hidden = false;
+async function micDetect(x, sr, fallbackName) {
+  const run = ++dRun;
+  if (x.length < sr * 6) { await finishDetect(x, sr, fallbackName); return; }
+  const idP = identifyFromSamples(x, sr);   // salinan data diambil sebelum analisis lokal
+  await finishDetect(x, sr, fallbackName);
+  if (run !== dRun) return;
+  const hasLocal = !$('dRes').hidden && !!dCur, local = hasLocal ? dCur.bpm : null, base = $('dMsg').textContent;
+  if (hasLocal) dmsg('Terdeteksi ' + local + ' BPM dari mikrofon. Mencari judul lagu\u2026');
+  else dmsg('Mencari judul lagu\u2026');
+  busyBar(true);
+  const r = await idP; busyBar(false);
+  if (run !== dRun || (dCur && dCur.saved)) return;
+  if (!r) { if (hasLocal) dmsg(base + ' Judul lagu belum dikenali, jadi hasil mikrofon yang dipakai.'); else if ($('dMsg').textContent.indexOf('Mencari') === 0) dmsg('Tempo dan judul lagu tidak terdeteksi. Coba lagi dengan suara lebih jelas dan dekat.'); return; }
+  const adj = hasLocal && dCur.adj, bpm = adj ? local : (r.bpm || local), name = r.artist ? r.artist + ' - ' + r.title : r.title;
+  if (!bpm) { dmsg('Lagu dikenali: ' + name + ', tapi temponya belum ditemukan. Coba rekam ulang.'); return; }
+  showPending(name, bpm, r.ts || null);
+  dCur.extra = { title: r.title, artist: r.artist || '', dur: r.dur || 0, key: r.key || '' }; dCur.adj = adj;
+  $('dSubT').textContent = 'LAGU TERDETEKSI (BELUM DISIMPAN)';
+  $('dIdTS').textContent = r.ts ? r.ts.n + '/' + r.ts.d : '\u2014'; $('dIdD').textContent = r.dur ? fmtDur(r.dur) : '\u2014'; $('dIdK').textContent = r.key || '\u2014'; $('dIdr').hidden = false;
+  const src = adj ? 'BPM sesuai pengaturanmu' : r.bpm ? 'BPM dari data lagu' + (local && local !== r.bpm ? ' (hasil mikrofon: ' + local + ')' : '') : 'BPM dari mikrofon (data tempo lagu belum tersedia)';
+  dmsg('Lagu dikenali. ' + src + '. Kalau tempo terasa kurang pas, tekan \u00f72 atau \u00d72. Tekan Simpan lagu untuk menyimpannya.');
 }
-function idSave(open) {
-  const r = idCur; if (!r) return; const name = r.artist ? r.artist + ' - ' + r.title : r.title, ts = r.ts || { n: 4, d: 4 };
-  let p = presets.find((x) => x.name === name);
-  if (!p) { p = mkPreset(name, r.bpm || 120, ts); presets.push(p); } else if (r.bpm) { p.bpm = r.bpm; p.beats = ts.n; p.note = Math.max(0, NOTES.indexOf(ts.d)); }
-  p.title = r.title; if (r.artist) p.artist = r.artist; if (r.dur) p.dur = r.dur; if (r.key) p.key = r.key; p.mod = Date.now(); savePresets(); renderPresets();
-  if (open) { applyPreset(p); show('vMain'); } else toast('Lagu disimpan: ' + name);
-}
-$('idGo').onclick = idListen; $('idSave').onclick = () => idSave(false); $('idOpen').onclick = () => idSave(true);
 
 // ----- Welcome screen -----
 (function () {

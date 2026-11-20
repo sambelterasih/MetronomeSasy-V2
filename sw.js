@@ -1,6 +1,6 @@
 // Simpan file aplikasi di HP supaya bisa dibuka tanpa internet.
 // File milik sendiri: coba internet dulu (supaya update langsung terpakai), cadangannya salinan di HP.
-const CACHE = 'metronome-v46';
+const CACHE = 'metronome-v49';
 const FILES = ['./', './index.html', './manifest.webmanifest', './firebase-config.js', './icon-192.png', './icon-512.png','./welcome.mp4','./icon-maskable-512.png','./apple-touch-icon.png','./favicon-48.png'];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)));
